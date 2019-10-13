@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<title>Qwerty crypto card generator</title>
+
+<style type="text/css">
+body{
+  background: #000;
+}
+div.card{
+  background: #333;
+  color: #fff;
+  font-family:Arial;
+  padding:12px;
+  min-width:120px;
+  border-radius:12px;
+}
+div {
+  float:left;
+}
+div:nth-child(11), div:nth-child(21){
+  clear: left;
+}
+div.card > div{
+  width: 24px;
+  height: 37px;
+  text-transform: uppercase;
+  font-style:italic;
+  border:1px solid #fff;
+  border-radius:12px;
+  margin: 3px;
+  padding:6px;
+  background: linear-gradient(-45deg, #fff 24%, transparent 62%);
+  position:relative;
+  font-weight:bold;
+}
+div.card > div.salt{
+  width:111px;
+  background: -webkit-linear-gradient(#eee, #777);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 40px;
+  text-align:center;
+  text-transform:none;
+}
+div.card > div > div {
+  position: absolute;
+  bottom:6px;
+  right:7px;
+  color:#333;
+  text-transform:none;
+  font-weight:normal;
+}
+</style>
+
+<script type="text/javascript">
+
+window.onload=function(){
+      
+  var chars = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m','.',',','!','?','$','%','&','*','(',')','1','2','3','4','5','6','7','8','9','0','=','+','-','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'];
+
+  var encs = document.querySelectorAll('.card > div > div');
+  var maxCharsIndex = chars.length - 1;
+
+  for (var i = 0, len = encs.length; i < len; i++){
+    var item = encs[i];
+    var newChar = getRandomInt(0, maxCharsIndex);
+
+    item.innerText = chars[newChar];
+  }
+
+  var salt = '';
+
+  for (var i = 0; i < 8; i++){
+    var newChar = getRandomInt(0, maxCharsIndex);
+
+    salt += chars[newChar];
+  }
+
+  document.querySelector('.salt').innerText = salt;
+
+  function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+}
+</script>
+
+<div class="card">
+  <div>q<div></div></div>
+  <div>w<div></div></div>
+  <div>e<div></div></div>
+  <div>r<div></div></div>
+  <div>t<div></div></div>
+  <div>y<div></div></div>
+  <div>u<div></div></div>
+  <div>i<div></div></div>
+  <div>o<div></div></div>
+  <div>p<div></div></div>
+  <div>a<div></div></div>
+  <div>s<div></div></div>
+  <div>d<div></div></div>
+  <div>f<div></div></div>
+  <div>g<div></div></div>
+  <div>h<div></div></div>
+  <div>j<div></div></div>
+  <div>k<div></div></div>
+  <div>l<div></div></div>
+  <div>.<div></div></div>
+  <div>z<div></div></div>
+  <div>x<div></div></div>
+  <div>c<div></div></div>
+  <div>v<div></div></div>
+  <div>b<div></div></div>
+  <div>n<div></div></div>
+  <div>m<div></div></div>
+  <div class='salt'>XSW@zaq1</div>
+</div>
+
+  
